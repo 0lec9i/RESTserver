@@ -21,9 +21,9 @@ class EmployeeController {
 
 	@SneakyThrows
 	@PostMapping("/audio")
-	String uploadFile(@RequestParam("file") MultipartFile file) {
+	RecognizeResponse uploadFile(@RequestParam("file") MultipartFile file) {
 		RecognizeResponse response = yandexApi.recognize(file.getBytes());
-		return response.getResult();
+		return response;
 	}
 
 	// tag::get-aggregate-root[]

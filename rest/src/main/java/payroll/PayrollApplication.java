@@ -5,6 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Collections;
+
 @SpringBootApplication
 public class PayrollApplication {
 
@@ -14,6 +16,8 @@ public class PayrollApplication {
 
 	@Bean
 	public RestTemplate restTemplate() {
-		return new RestTemplate();
+		RestTemplate restTemplate = new RestTemplate();
+		restTemplate.setInterceptors(Collections.singletonList(new RequestResponseLoggingInterceptor()));
+		return restTemplate;
 	}
 }
